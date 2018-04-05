@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SQLite3</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="header">My First SQLite app</string>
+    <string name="deleteAll">Delete All</string>
+    <string name="title_activity_single">SingleActivity</string>
+
+    <string name="single">See single</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="header_single">SQLite -- Secondary Activity</string>
+    <string name="title_activity_count">CountActivity</string>
+</resources>
