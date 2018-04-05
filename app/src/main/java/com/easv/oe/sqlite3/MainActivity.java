@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
     void onClickInsert() {
         DAO dao = DAO.getInstance();
         String name = etName.getText().toString();
-        String mail = etName.getText().toString();
+        String mail = "12";
         String website = etName.getText().toString();
         String phone = etName.getText().toString();
         String birthday = etName.getText().toString();
