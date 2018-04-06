@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FriendStalkerApp.iml" filepath="$PROJECT_DIR$/FriendStalkerApp.iml" />
+      <module fileurl="file://C:\Users\Jens Nissen\Documents\GitHub\FriendStalkerApp\FriendStalkerApp.iml" filepath="C:\Users\Jens Nissen\Documents\GitHub\FriendStalkerApp\FriendStalkerApp.iml" />
       <module fileurl="file://C:\Users\Nicolai\Downloads\SQLite3-master\SQLite3.iml" filepath="C:\Users\Nicolai\Downloads\SQLite3-master\SQLite3.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Jens Nissen\Documents\GitHub\FriendStalkerApp\app\app.iml" filepath="C:\Users\Jens Nissen\Documents\GitHub\FriendStalkerApp\app\app.iml" />
     </modules>
   </component>
 </project>
