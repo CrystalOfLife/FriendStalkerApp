@@ -7,24 +7,60 @@
     android:orientation="vertical"
     tools:context="com.example.nicolai.SingleActivity">
 
-    <TextView android:text="Single Activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"/>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name NoName"
+        android:text="Single Activity"
+        android:textSize="30dp"/>
+
+    <TextView
         android:id="@+id/txtName"
-        android:textSize="25dp"
-       />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name NoName"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/txtMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mail"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/txtBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birthday"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/txtWebsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website"
+        android:textSize="25dp" />
+
     <Button
         android:id="@+id/btnDelete"
-        android:text="Delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="Delete"
         android:onClick="onClickDelete"/>
 
 </LinearLayout>
