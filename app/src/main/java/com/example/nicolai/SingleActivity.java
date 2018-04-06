@@ -1,9 +1,11 @@
-package com.easv.oe.sqlite3;
+package com.example.nicolai;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.easv.oe.sqlite3.R;
 
 public class SingleActivity extends Activity {
 

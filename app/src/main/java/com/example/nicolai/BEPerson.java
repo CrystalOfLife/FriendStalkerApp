@@ -1,4 +1,4 @@
-package com.easv.oe.sqlite3;
+package com.example.nicolai;
 
 public class BEPerson {
 
