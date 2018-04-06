@@ -73,7 +73,7 @@ public class MainActivity extends Activity {
         DAO dao = DAO.getInstance();
         String name = etName.getText().toString();
         String mail = "12";
-        String website = etName.getText().toString();
+        String website = "google.com";
         String phone = "75424015";
         String birthday = etName.getText().toString();
         String address = etName.getText().toString();

@@ -29,7 +29,7 @@ public class SingleActivity extends Activity {
         final TextView txtPhone = (TextView)findViewById(R.id.txtPhone);
         final TextView txtMail = (TextView)findViewById(R.id.txtMail);
         TextView txtBirthday = (TextView)findViewById(R.id.txtBirthday);
-        TextView txtWebsite = (TextView)findViewById(R.id.txtWebsite);
+        final TextView txtWebsite = (TextView)findViewById(R.id.txtWebsite);
         ImageButton callBtn = (ImageButton)findViewById(R.id.callBtn);
         ImageButton mailBtn = (ImageButton)findViewById(R.id.mailBtn);
         ImageButton smsBtn = (ImageButton)findViewById(R.id.smsBtn);
@@ -41,6 +41,13 @@ public class SingleActivity extends Activity {
         txtBirthday.setText(current.m_birthday);
         txtWebsite.setText(current.m_website);
 
+        websiteBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Uri uriUrl = Uri.parse("http://"+txtWebsite.getText().toString());
+                Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                startActivity(launchBrowser);
+            }
+        });
 
         smsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
