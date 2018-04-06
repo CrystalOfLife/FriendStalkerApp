@@ -1,4 +1,4 @@
-package com.example.nicolai;
+package com.easv.oe.sqlite3;
 
 
 import android.app.Activity;
@@ -10,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
-import com.easv.oe.sqlite3.R;
 
 public class MainActivity extends Activity {
 

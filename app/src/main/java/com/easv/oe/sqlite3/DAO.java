@@ -1,4 +1,4 @@
-package com.example.nicolai;
+package com.easv.oe.sqlite3;
 
 import java.util.ArrayList;
 import java.util.List;
