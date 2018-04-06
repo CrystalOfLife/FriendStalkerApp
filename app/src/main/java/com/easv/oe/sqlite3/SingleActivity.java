@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class SingleActivity extends Activity {
 
     DAO dao;
+    String extraEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class SingleActivity extends Activity {
         txtBirthday.setText(current.m_birthday);
         txtWebsite.setText(current.m_website);
 
+        extraEmail = txtMail.getText().toString();
+
 
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("plain/text");
@@ -47,7 +50,23 @@ public class SingleActivity extends Activity {
         intent.putExtra(Intent.EXTRA_TEXT, "mail body");
         startActivity(Intent.createChooser(intent, ""));
 
-   }
+
+        mailBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{extraEmail});
+                intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+                intent.putExtra(Intent.EXTRA_TEXT, "mail body");
+                startActivity(Intent.createChooser(intent, ""));
+            }
+        });
+    }
+
+    public void onClickMail()
+    {
+
+    }
 
     public void onClickHome(View v)
     {
