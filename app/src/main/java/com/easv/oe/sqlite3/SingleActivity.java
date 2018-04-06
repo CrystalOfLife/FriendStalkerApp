@@ -42,9 +42,13 @@ public class SingleActivity extends Activity {
         txtWebsite.setText(current.m_website);
 
 
-
-
-
+        smsBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + txtPhone.getText().toString()));
+                intent.putExtra("sms_body", "message");
+                startActivity(intent);
+            }
+        });
         mailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
