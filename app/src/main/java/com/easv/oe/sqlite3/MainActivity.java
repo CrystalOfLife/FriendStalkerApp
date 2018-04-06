@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
         String name = etName.getText().toString();
         String mail = "12";
         String website = etName.getText().toString();
-        String phone = etName.getText().toString();
+        String phone = "75424015";
         String birthday = etName.getText().toString();
         String address = etName.getText().toString();
         dao.insert(new BEPerson(0, name, mail, website, phone, birthday, address));
