@@ -22,7 +22,7 @@ public class BEPerson {
     }
 
     public String toString() {
-        return "" + m_id + ": " + m_name + m_mail + m_website + m_phone + m_birthday + m_address;
+        return "" + m_name;
     }
 
 }

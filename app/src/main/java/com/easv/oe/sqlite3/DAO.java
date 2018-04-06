@@ -43,7 +43,7 @@ public class DAO {
         this.insertStmt = this.db.compileStatement(INSERT);
     }
 
-
+    //add new BEPerson
     private static final String INSERT = "insert into " + TABLE_NAME
             + "(name, mail, website, phone, birthday, address) values (?, ?, ?, ?, ?, ?)";
 
@@ -59,11 +59,13 @@ public class DAO {
         return id;
     }
 
+    // deletes all BEPerson
     public void deleteAll() {
 
         this.db.delete(TABLE_NAME, null, null);
     }
 
+    // deletes a s specific BEPerson
     public void deleteById(long id)
     {
         this.db.delete(TABLE_NAME, "id = " + id, null);
@@ -73,6 +75,7 @@ public class DAO {
     {
 
     }
+    // gets the whole list of BEPerson
     public List<BEPerson> getAll() {
         List<BEPerson> list = new ArrayList<BEPerson>();
         Cursor cursor = this.db.query(TABLE_NAME,
@@ -96,6 +99,7 @@ public class DAO {
         return list;
     }
 
+    // gets BePerson by their index
     public BEPerson getByIndex(int index)
     {
         return getAll().get(index);
@@ -108,6 +112,7 @@ public class DAO {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
+        // creates a new database with the defined rows
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + TABLE_NAME
@@ -115,6 +120,7 @@ public class DAO {
 
         }
 
+        // deletes the previous database and creates a new one
         @Override
         public void onUpgrade(SQLiteDatabase db,
                               int oldVersion, int newVersion) {

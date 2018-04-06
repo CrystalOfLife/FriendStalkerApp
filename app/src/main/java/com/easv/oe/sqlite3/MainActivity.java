@@ -32,6 +32,8 @@ public class MainActivity extends Activity {
         deleteButton = (Button) findViewById(R.id.btnDelete);
         lvNames = (ListView) findViewById(R.id.lvNames);
         fillList();
+
+        // when clicking on item in list, navigate to SingleActivity with the position of the item
         lvNames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -40,17 +42,16 @@ public class MainActivity extends Activity {
                 x.setClass(MainActivity.this, SingleActivity.class);
                 x.putExtra("index", position);
                 startActivity(x);
-                //Toast.makeText(MainActivity.this, "Say hi to " + DAO.getInstance().getByIndex(position).m_name, Toast.LENGTH_LONG).show();
             }
         });
 
-
+        // activates on button press, adds a BEPerson
         insertButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.this.onClickInsert();
             }
         });
-
+        // activates on button press, deletes everything in the list
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.this.onClickDeleteAll();
@@ -67,6 +68,7 @@ public class MainActivity extends Activity {
         fillList();
     }
 
+    // Creates a new BEPerson and adds it to the list, based on in the information provided below
     void onClickInsert() {
         DAO dao = DAO.getInstance();
         String name = etName.getText().toString();
@@ -80,12 +82,14 @@ public class MainActivity extends Activity {
         fillList();
     }
 
+    // Deletes all items on the list and updates it
     void onClickDeleteAll() {
         DAO dao = DAO.getInstance();
         dao.deleteAll();
         fillList();
     }
 
+    // fills the list based on what we have defined in BEPerson
     void fillList() {
         DAO dao = DAO.getInstance();
 
