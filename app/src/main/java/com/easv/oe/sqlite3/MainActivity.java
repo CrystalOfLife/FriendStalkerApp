@@ -5,6 +5,12 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
@@ -23,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
     EditText etName;
     Button insertButton;
     Button deleteButton;
+    ImageView testImage;
     ListView lvNames;
     Bitmap profilePicture;
 
@@ -39,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
         insertButton = (Button) findViewById(R.id.btnInsert);
         deleteButton = (Button) findViewById(R.id.btnDelete);
         lvNames = (ListView) findViewById(R.id.lvNames);
+        testImage = (ImageView) findViewById(R.id.testImage);
         fillList();
 
         // when clicking on item in list, navigate to SingleActivity with the position of the item
@@ -115,6 +124,40 @@ public class MainActivity extends ActionBarActivity {
 
     private void setTakenPicture(Intent data) {
         Bitmap picture = (Bitmap) data.getExtras().get("data");
+        profilePicture = cropPicture(picture);
+        testImage.setImageBitmap(profilePicture);
+    }
+
+    private Bitmap cropPicture(Bitmap bitmap) {
+        return roundCropBitmap(bitmap);
+    }
+
+
+    /**
+     * Method the crop the picture to a round shape once the user takes one
+     * @param bitmap
+     * @return
+     */
+    public Bitmap roundCropBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                bitmap.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
+        //return _bmp;
+        return output;
     }
 
     // Creates a new BEPerson and adds it to the list, based on in the information provided below

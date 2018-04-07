@@ -11,11 +11,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.Image;
 
 public class DAO {
 
     private static final String DATABASE_NAME = "contacts.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
     private static final String TABLE_NAME = "friend_table";
 
     private static Context context;
@@ -94,11 +95,12 @@ public class DAO {
     public List<BEPerson> getAll() {
         List<BEPerson> list = new ArrayList<BEPerson>();
         Cursor cursor = this.db.query(TABLE_NAME,
-                new String[]{"id", "name", "mail", "website", "phone", "birthday", "address"},
+                new String[]{"id", "name", "mail", "website", "phone", "birthday", "address", "picture"},
                 null, null,
                 null, null, "name desc");
         if (cursor.moveToFirst()) {
             do {
+                BEPerson p;
                 list.add(new BEPerson(cursor.getInt(0),
                                       cursor.getString(1),
                                       cursor.getString(2),
