@@ -1,5 +1,6 @@
 package com.easv.oe.sqlite3;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +9,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 public class DAO {
 
     private static final String DATABASE_NAME = "contacts.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
     private static final String TABLE_NAME = "friend_table";
 
     private static Context context;
@@ -43,9 +46,20 @@ public class DAO {
         this.insertStmt = this.db.compileStatement(INSERT);
     }
 
+    // convert from bitmap to byte array
+    public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
+        return outputStream.toByteArray();
+    }
+    // convert from byte array to bitmap
+    public Bitmap getImage(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
     //add new BEPerson
     private static final String INSERT = "insert into " + TABLE_NAME
-            + "(name, mail, website, phone, birthday, address) values (?, ?, ?, ?, ?, ?)";
+            + "(name, mail, website, phone, birthday, address, picture) values (?, ?, ?, ?, ?, ?, ?)";
 
     public long insert(BEPerson p) {
         this.insertStmt.bindString(1, p.m_name);
@@ -54,6 +68,7 @@ public class DAO {
         this.insertStmt.bindString(4, p.m_phone);
         this.insertStmt.bindString(5, p.m_birthday);
         this.insertStmt.bindString(6, p.m_address);
+        this.insertStmt.bindBlob(7, getBitmapAsByteArray(p.m_picture));
         long id = this.insertStmt.executeInsert();
         p.m_id = id;
         return id;
@@ -90,7 +105,8 @@ public class DAO {
                                       cursor.getString(3),
                                       cursor.getString(4),
                                       cursor.getString(5),
-                                      cursor.getString(6)));
+                                      cursor.getString(6),
+                                      getImage(cursor.getBlob(7))));
             } while (cursor.moveToNext());
         }
         if (!cursor.isClosed()) {
@@ -116,7 +132,7 @@ public class DAO {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + TABLE_NAME
-                    + " (id INTEGER PRIMARY KEY, name TEXT, mail TEXT, website TEXT, phone TEXT, birthday TEXT, address TEXT)");
+                    + " (id INTEGER PRIMARY KEY, name TEXT, mail TEXT, website TEXT, phone TEXT, birthday TEXT, address TEXT, picture BLOB)");
 
         }
 

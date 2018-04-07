@@ -75,11 +75,6 @@ public class SingleActivity extends Activity {
         });
     }
 
-    public void onClickMail()
-    {
-
-    }
-
     public void onClickHome(View v)
     {
 

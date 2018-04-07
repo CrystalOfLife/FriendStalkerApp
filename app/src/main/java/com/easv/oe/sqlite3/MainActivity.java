@@ -3,6 +3,7 @@ package com.easv.oe.sqlite3;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ public class MainActivity extends Activity {
     Button insertButton;
     Button deleteButton;
     ListView lvNames;
+    Bitmap profilePicture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,8 @@ public class MainActivity extends Activity {
         String phone = "75424015";
         String birthday = etName.getText().toString();
         String address = etName.getText().toString();
-        dao.insert(new BEPerson(0, name, mail, website, phone, birthday, address));
+        Bitmap picture = profilePicture;
+        dao.insert(new BEPerson(0, name, mail, website, phone, birthday, address, picture));
         etName.setText("");
         fillList();
     }
