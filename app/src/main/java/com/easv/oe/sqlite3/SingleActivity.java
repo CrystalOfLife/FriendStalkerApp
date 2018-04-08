@@ -34,12 +34,14 @@ public class SingleActivity extends Activity {
         ImageButton mailBtn = (ImageButton)findViewById(R.id.mailBtn);
         ImageButton smsBtn = (ImageButton)findViewById(R.id.smsBtn);
         ImageButton websiteBtn = (ImageButton)findViewById(R.id.websiteBtn);
+        ImageButton btnPicture = (ImageButton)findViewById(R.id.btnPicture);
         txtName.setText(current.m_name);
         txtAddress.setText(current.m_address);
         txtPhone.setText(current.m_phone);
         txtMail.setText(current.m_mail);
         txtBirthday.setText(current.m_birthday);
         txtWebsite.setText(current.m_website);
+        btnPicture.setImageBitmap(current.m_picture);
 
         websiteBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
