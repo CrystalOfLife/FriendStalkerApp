@@ -16,7 +16,7 @@ import android.media.Image;
 public class DAO {
 
     private static final String DATABASE_NAME = "contacts.db";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 9;
     private static final String TABLE_NAME = "friend_table";
 
     private static Context context;

@@ -84,7 +84,9 @@ public class SingleActivity extends Activity {
 
     public void onClickShow(View v)
     {
-
+        Intent x = new Intent();
+        x.setClass(SingleActivity.this, MapsActivity.class);
+        startActivity(x);
     }
 
     public void onClickDelete(View v)
