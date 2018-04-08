@@ -4,7 +4,8 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/Action_add"
-        android:title="Add Friend" />
+        android:title="Add Friend"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
