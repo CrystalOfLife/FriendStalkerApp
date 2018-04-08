@@ -45,20 +45,24 @@ public class AddFriendActivity extends ActionBarActivity {
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onClickSave();
+                if (editName.getText().toString().isEmpty() || editMail.getText().toString().isEmpty() || editWebsite.getText().toString().isEmpty() ||
+                        editPhone.getText().toString().isEmpty() || editBirthday.getText().toString().isEmpty() || editAddress.getText().toString().isEmpty() ||
+                        profilePicture == null)
+                {
+                    txtFail.setText("Please input information on all fields");
+                }
+                else
+                {
+                    onClickSave();
+                }
             }
+
         });
 
         btnPicture.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (editName != null && editMail != null && editWebsite != null && editPhone != null &&
-                        editBirthday != null && editAddress != null && profilePicture != null)
                 {
                     openPictureActivity();
-                }
-                else
-                {
-                    txtFail.setText("Please input information on all fields");
                 }
             }
         });
