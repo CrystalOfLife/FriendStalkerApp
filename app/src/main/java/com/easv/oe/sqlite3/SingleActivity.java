@@ -53,6 +53,9 @@ public class SingleActivity extends AppCompatActivity {
         txtWebsite.setText(current.m_website);
         btnPicture.setImageBitmap(current.m_picture);
 
+        /**
+         * Open website
+         */
         websiteBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Uri uriUrl = Uri.parse("http://"+txtWebsite.getText().toString());
@@ -61,6 +64,9 @@ public class SingleActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Open sms
+         */
         smsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("sms:" + txtPhone.getText().toString()));
@@ -68,6 +74,10 @@ public class SingleActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        /**
+         * Open mail
+         */
         mailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -78,6 +88,10 @@ public class SingleActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(intent, ""));
             }
         });
+
+        /**
+         * Open phone
+         */
         callBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -92,6 +106,10 @@ public class SingleActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * goes to the MapsActivity
+     * @param v
+     */
     public void onClickShow(View v)
     {
         if(isServicesOK()){
@@ -101,6 +119,10 @@ public class SingleActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Deletes the current friend
+     * @param v
+     */
     public void onClickDelete(View v)
     {
         dao = DAO.getInstance();
