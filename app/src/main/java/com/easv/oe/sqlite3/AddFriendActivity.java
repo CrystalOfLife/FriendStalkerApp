@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * Created by Nicolai on 08-04-2018.
@@ -24,6 +25,7 @@ public class AddFriendActivity extends ActionBarActivity {
     ImageButton btnPicture;
     Button btnSave;
     EditText editName, editBirthday, editAddress, editPhone, editMail, editWebsite;
+    TextView txtFail;
     Bitmap profilePicture;
 
     @Override
@@ -38,6 +40,7 @@ public class AddFriendActivity extends ActionBarActivity {
         editPhone = (EditText) findViewById(R.id.editPhone);
         editMail = (EditText) findViewById(R.id.editMail);
         editWebsite = (EditText) findViewById(R.id.editWebsite);
+        txtFail = (TextView) findViewById(R.id.txtFail);
         btnSave = (Button) findViewById(R.id.btnSave);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +51,15 @@ public class AddFriendActivity extends ActionBarActivity {
 
         btnPicture.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                openPictureActivity();
+                if (editName != null && editMail != null && editWebsite != null && editPhone != null &&
+                        editBirthday != null && editAddress != null && profilePicture != null)
+                {
+                    openPictureActivity();
+                }
+                else
+                {
+                    txtFail.setText("Please input information on all fields");
+                }
             }
         });
     }

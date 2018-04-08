@@ -59,9 +59,17 @@
         android:hint="website"
         android:inputType="text"/>
 
+    <TextView
+        android:id="@+id/txtFail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="" />
+
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Save" />
 
 </LinearLayout>
