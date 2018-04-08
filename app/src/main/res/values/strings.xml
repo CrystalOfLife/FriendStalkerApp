@@ -11,4 +11,5 @@
     <string name="hello_world">Hello world!</string>
     <string name="header_single">SQLite -- Secondary Activity</string>
     <string name="title_activity_count">CountActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

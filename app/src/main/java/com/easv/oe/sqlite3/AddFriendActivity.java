@@ -9,7 +9,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +20,7 @@ import android.widget.TextView;
  * Created by Nicolai on 08-04-2018.
  */
 
-public class AddFriendActivity extends ActionBarActivity {
+public class AddFriendActivity extends AppCompatActivity {
     private final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
     ImageButton btnPicture;
     Button btnSave;
