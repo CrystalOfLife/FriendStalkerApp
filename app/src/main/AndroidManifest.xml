@@ -20,6 +20,10 @@
             android:name=".SingleActivity"
             android:label="@string/title_activity_single" >
         </activity>
+        <activity
+            android:name=".AddFriendActivity"
+            android:label="@string/title_add_friend" >
+        </activity>
     </application>
 
 </manifest>

@@ -4,4 +4,8 @@
         app:showAsAction="always"
         android:id="@+id/takePicture"
         android:title="Take picture" />
+
+    <item android:title="Add Friend"
+        app:showAsAction="always"
+        android:id="@+id/addFriend"/>
 </menu>

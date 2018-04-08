@@ -92,6 +92,9 @@ public class MainActivity extends ActionBarActivity {
             case R.id.takePicture:
                 openPictureActivity();
                 break;
+            case R.id.addFriend:
+                openAddFriendActivity();
+                break;
             default:
                 break;
         }
@@ -108,6 +111,12 @@ public class MainActivity extends ActionBarActivity {
     private void openPictureActivity() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+    }
+
+    private void openAddFriendActivity() {
+        Intent x = new Intent();
+        x.setClass(MainActivity.this, AddFriendActivity.class);
+        startActivity(x);
     }
 
     @Override
