@@ -1,16 +1,26 @@
 package com.easv.oe.sqlite3;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class SingleActivity extends Activity {
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
+import static android.content.ContentValues.TAG;
+
+public class SingleActivity extends AppCompatActivity {
 
     DAO dao;
+    private static final int ERROR_DIALOG_REQUEST = 9001;
 
 
     @Override
@@ -84,9 +94,10 @@ public class SingleActivity extends Activity {
 
     public void onClickShow(View v)
     {
-        Intent x = new Intent();
-        x.setClass(SingleActivity.this, MapsActivity.class);
-        startActivity(x);
+        if(isServicesOK()){
+            Intent i = new Intent(this, MapsActivity.class);
+            startActivity(i);
+        }
 
     }
 
@@ -101,5 +112,26 @@ public class SingleActivity extends Activity {
         dao.deleteById(current.m_id);
 
         finish();
+    }
+
+    public boolean isServicesOK(){
+        Log.d(TAG, "isServicesOK: checking google services version");
+
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(SingleActivity.this);
+
+        if(available == ConnectionResult.SUCCESS){
+            //everything is fine and the user can make map requests
+            Log.d(TAG, "isServicesOK: Google Play Services is working");
+            return true;
+        }
+        else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
+            //an error occured but we can resolve it
+            Log.d(TAG, "isServicesOK: an error occured but we can fix it");
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(SingleActivity.this, available, ERROR_DIALOG_REQUEST);
+            dialog.show();
+        }else{
+            Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 }
