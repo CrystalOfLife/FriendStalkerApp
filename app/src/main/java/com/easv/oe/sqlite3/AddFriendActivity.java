@@ -43,6 +43,9 @@ public class AddFriendActivity extends AppCompatActivity {
         txtFail = (TextView) findViewById(R.id.txtFail);
         btnSave = (Button) findViewById(R.id.btnSave);
 
+        /**
+         * This button will check wether or not all variables has been filled in and either save or give and error message depending
+         */
         btnSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (editName.getText().toString().isEmpty() || editMail.getText().toString().isEmpty() || editWebsite.getText().toString().isEmpty() ||
@@ -59,6 +62,9 @@ public class AddFriendActivity extends AppCompatActivity {
 
         });
 
+        /**
+         * button for activating the camera
+         */
         btnPicture.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 {
@@ -68,6 +74,10 @@ public class AddFriendActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Will get all the user input text and place into the database
+     * then it will return to MainActivity
+     */
     void onClickSave() {
         DAO dao = DAO.getInstance();
         String name = editName.getText().toString();
@@ -90,11 +100,20 @@ public class AddFriendActivity extends AppCompatActivity {
         startActivity(x);
     }
 
+    /**
+     * this open the camera app
+     */
     private void openPictureActivity() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
 
+    /**
+     * activates when taking a picture and sends the data
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -107,6 +126,10 @@ public class AddFriendActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /**
+     * uses the data to and sets it on the button after being cropped
+     * @param data
+     */
     private void setTakenPicture(Intent data) {
         Bitmap picture = (Bitmap) data.getExtras().get("data");
         profilePicture = roundCropBitmap(picture);
@@ -114,7 +137,7 @@ public class AddFriendActivity extends AppCompatActivity {
     }
 
     /**
-     * Method the crop the picture to a round shape once the user takes one
+     * Crops the picture to be round
      * @param bitmap
      * @return
      */
@@ -130,13 +153,10 @@ public class AddFriendActivity extends AppCompatActivity {
         paint.setAntiAlias(true);
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(color);
-        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
         canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
                 bitmap.getWidth() / 2, paint);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
-        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
-        //return _bmp;
         return output;
     }
 }

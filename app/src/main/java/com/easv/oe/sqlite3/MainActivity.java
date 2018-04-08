@@ -27,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
         lvNames = (ListView) findViewById(R.id.lvNames);
         fillList();
 
-        // when clicking on item in list, navigate to SingleActivity with the position of the item
+        /**
+         * when clicking on item in list, navigate to SingleActivity with the position of the item
+         */
         lvNames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -39,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // activates on button press, deletes everything in the list
+        /**
+         * activates on button press, deletes everything in the list
+         */
         deleteButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 MainActivity.this.onClickDeleteAll();
@@ -74,20 +78,27 @@ public class MainActivity extends AppCompatActivity {
         fillList();
     }
 
+    /**
+     * Opens the addFriendActivity
+     */
     private void openAddFriendActivity() {
         Intent x = new Intent();
         x.setClass(MainActivity.this, AddFriendActivity.class);
         startActivity(x);
     }
 
-    // Deletes all items on the list and updates it
+    /**
+     * Deletes all items on the list and updates it
+     */
     void onClickDeleteAll() {
         DAO dao = DAO.getInstance();
         dao.deleteAll();
         fillList();
     }
 
-    // fills the list based on what we have defined in BEPerson
+    /**
+     * fills the list based on what we have defined in BEPerson
+     */
     void fillList() {
         DAO dao = DAO.getInstance();
 

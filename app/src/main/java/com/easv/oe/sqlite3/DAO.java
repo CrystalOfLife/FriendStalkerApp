@@ -21,11 +21,14 @@ public class DAO {
 
     private static Context context;
 
+    /**
+     * the database
+     */
     private SQLiteDatabase db;
+    /**
+     * statement to insert in database
+     */
     private SQLiteStatement insertStmt;
-
-
-
 
     private static DAO m_instance;
 
@@ -47,18 +50,29 @@ public class DAO {
         this.insertStmt = this.db.compileStatement(INSERT);
     }
 
-    // convert from bitmap to byte array
+    /**
+     * convert from bitmap to byte array
+     * @param bitmap
+     * @return
+     */
     public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream);
         return outputStream.toByteArray();
     }
-    // convert from byte array to bitmap
+
+    /**
+     * convert from byte array to bitmap
+     * @param image
+     * @return
+     */
     public Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
-    //add new BEPerson
+    /**
+     * add new BEPerson
+     */
     private static final String INSERT = "insert into " + TABLE_NAME
             + "(name, mail, website, phone, birthday, address, picture) values (?, ?, ?, ?, ?, ?, ?)";
 
@@ -75,13 +89,18 @@ public class DAO {
         return id;
     }
 
-    // deletes all BEPerson
+    /**
+     * deletes all BEPerson
+     */
     public void deleteAll() {
 
         this.db.delete(TABLE_NAME, null, null);
     }
 
-    // deletes a s specific BEPerson
+    /**
+     * deletes a s specific BEPerson
+     * @param id
+     */
     public void deleteById(long id)
     {
         this.db.delete(TABLE_NAME, "id = " + id, null);
@@ -91,7 +110,11 @@ public class DAO {
     {
 
     }
-    // gets the whole list of BEPerson
+
+    /**
+     * gets the whole list of BEPerson
+     * @return
+     */
     public List<BEPerson> getAll() {
         List<BEPerson> list = new ArrayList<BEPerson>();
         Cursor cursor = this.db.query(TABLE_NAME,
@@ -117,13 +140,19 @@ public class DAO {
         return list;
     }
 
-    // gets BePerson by their index
+    /**
+     * gets BePerson by their index
+     * @param index
+     * @return
+     */
     public BEPerson getByIndex(int index)
     {
         return getAll().get(index);
     }
 
-
+    /**
+     * create table
+     */
     private static class OpenHelper extends SQLiteOpenHelper {
 
         OpenHelper(Context context) {
