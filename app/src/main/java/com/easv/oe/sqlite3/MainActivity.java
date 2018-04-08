@@ -1,5 +1,6 @@
 package com.easv.oe.sqlite3;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button deleteButton;
     ListView lvNames;
+    private static final String TAG = "MainActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (menuId) {
             case R.id.addFriend:
-                openAddFriendActivity();
+               openAddFriendActivity();
                 break;
             default:
                 break;
